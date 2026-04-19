@@ -1,119 +1,61 @@
-# Short URL - URL Shortener API
+# 🚀 Node.js URL Shortener
 
-A URL shortener service built with **Node.js**, **Express**, and **MongoDB**, following the **MVC architecture pattern**. Generate short URLs, redirect users, and track visit analytics.
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![EJS](https://img.shields.io/badge/EJS-B4CA65?style=for-the-badge&logo=ejs&logoColor=black)
 
-## Project Structure
+A fast, fully-functional URL Shortener built meticulously with **Node.js, Express, and MongoDB**. This application takes long, cumbersome URLs and condenses them into clean, manageable links while actively tracking visit analytics such as click counts and timestamp histories!
 
-```
-├── index.js              # Entry point - Express server & redirect route
-├── connect.js            # MongoDB connection handler
-├── models/
-│   └── url.js            # Mongoose schema for URL (shortId, redirectURL, visitHistory)
-├── controllers/
-│   └── url.js            # Business logic for URL shortening & analytics
-├── routes/
-│   └── url.js            # Express Router for URL endpoints
-├── package.json
-└── .gitignore
-```
+## ✨ Key Features
+- **Instant URL Shortening**: Generates unique 8-character aliases for any valid URL.
+- **Detailed Analytics**: Tracks how many times your short URL has been visited alongside precise timestamps.
+- **Server-Side Rendering**: Built with **EJS** templating for a quick, dynamic, and seamless frontend experience without the overhead of heavy client-side frameworks.
+- **Robust Architecture**: Strictly follows the **MVC (Model-View-Controller)** design pattern, keeping routes, controllers, and models cleanly separated for deep maintainability.
+- **Scalable Database**: Utilizes Mongoose & MongoDB to reliably store and manage relations between short IDs and their target endpoints seamlessly.
 
-## Tech Stack
+## 🛠️ Tech Stack
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB, Mongoose
+- **Frontend Template**: EJS (Embedded JavaScript templating)
+- **Utilities**: `shortid` for blazing-fast unique string generation.
 
-- **Runtime**: Node.js
-- **Framework**: Express.js v5
-- **Database**: MongoDB with Mongoose ODM
-- **ID Generation**: ShortID for generating unique short URLs
-- **Dev Tool**: Nodemon
-
-## Features
-
-- **Generate Short URLs** — POST a long URL and get a unique short ID back
-- **URL Redirection** — Visit `/:shortID` and get redirected to the original URL
-- **Visit Analytics** — Track every visit with timestamps and get total click count
-- **MVC Architecture** — Clean separation of Models, Controllers, and Routes
-
-## API Endpoints
-
-| Method | Endpoint                      | Description                       |
-|--------|-------------------------------|-----------------------------------|
-| `POST` | `/url`                        | Generate a new short URL          |
-| `GET`  | `/:shortID`                   | Redirect to the original URL      |
-| `GET`  | `/url/analytics/:shortId`     | Get visit analytics for a short URL |
-
-### POST `/url` — Create Short URL
-
-**Request Body** (JSON):
-```json
-{
-  "url": "https://example.com/some-long-url"
-}
-```
-
-**Response**:
-```json
-{
-  "id": "abc123"
-}
-```
-
-### GET `/:shortID` — Redirect
-
-Visiting `http://localhost:8001/abc123` will redirect you to the original URL and log the visit.
-
-### GET `/url/analytics/:shortId` — Analytics
-
-**Response**:
-```json
-{
-  "totalClicks": 3,
-  "analytics": [
-    { "timestamp": 1713200000000 },
-    { "timestamp": 1713200100000 },
-    { "timestamp": 1713200200000 }
-  ]
-}
-```
-
-## URL Schema
-
-```javascript
-{
-  shortId:      { type: String, required: true, unique: true },
-  redirectURL:  { type: String, required: true },
-  visitHistory: [{ timestamp: { type: Number } }],
-  createdAt:    { type: Date },   // auto-generated
-  updatedAt:    { type: Date }    // auto-generated
-}
-```
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-
-- [Node.js](https://nodejs.org/) installed
-- [MongoDB](https://www.mongodb.com/) running locally on `mongodb://127.0.0.1:27017`
+Make sure you have [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.com/) installed on your machine.
 
 ### Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Shubham-Sharma1995/NodeJS_ShortURL.git
+   cd NodeJS_ShortURL
+   ```
 
-```bash
-# Clone the repo
-git clone https://github.com/Shubham-Sharma1995/NodeJS_ShortURL.git
-cd NodeJS_ShortURL
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Install dependencies
-npm install
+3. **Start the Database**
+   Ensure your local MongoDB server is running on `mongodb://127.0.0.1:27017`
 
-# Start the server (uses nodemon)
-npm start
-```
+4. **Run the Application**
+   ```bash
+   npm start
+   ```
 
-The server will start at **http://localhost:8001**.
+5. **Open in Browser**
+   Navigate to `http://localhost:8001/` to use the application!
 
-## What I Learned
+## 🛣️ API Endpoints
 
-- Building a **URL shortener** service from scratch
-- Using **ShortID** library for generating unique identifiers
-- Tracking **visit analytics** with MongoDB `$push` operations
-- Implementing **URL redirection** with `res.redirect()`
-- Structuring a Node.js project with the **MVC pattern**
-- Working with **Mongoose** schemas, `findOneAndUpdate`, and `findOne`
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/` | Renders the home page and the history of generated URLs |
+| `POST` | `/url` | Accepts `{ url: "https://..." }` and generates a new shortened ID |
+| `GET` | `/url/:shortId` | Redirects the user to the original destination URL and records the visit |
+| `GET` | `/url/analytics/:shortId` | Returns JSON of total clicks and timestamp history for a specific link |
+
+---
+*Built with ❤️ by [Shubham Sharma](https://github.com/Shubham-Sharma1995)*
