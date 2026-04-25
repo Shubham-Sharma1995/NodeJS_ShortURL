@@ -10,6 +10,7 @@ A fast, fully-functional URL Shortener built meticulously with **Node.js, Expres
 ## ✨ Key Features
 - **Instant URL Shortening**: Generates unique 8-character aliases for any valid URL.
 - **Detailed Analytics**: Tracks how many times your short URL has been visited alongside precise timestamps.
+- **User Authentication**: Secure signup and login functionality with persistent session and cookie-based authentication state.
 - **Server-Side Rendering**: Built with **EJS** templating for a quick, dynamic, and seamless frontend experience without the overhead of heavy client-side frameworks.
 - **Robust Architecture**: Strictly follows the **MVC (Model-View-Controller)** design pattern, keeping routes, controllers, and models cleanly separated for deep maintainability.
 - **Scalable Database**: Utilizes Mongoose & MongoDB to reliably store and manage relations between short IDs and their target endpoints seamlessly.
@@ -56,6 +57,10 @@ Make sure you have [Node.js](https://nodejs.org/) and [MongoDB](https://www.mong
 | `POST` | `/url` | Accepts `{ url: "https://..." }` and generates a new shortened ID |
 | `GET` | `/url/:shortId` | Redirects the user to the original destination URL and records the visit |
 | `GET` | `/url/analytics/:shortId` | Returns JSON of total clicks and timestamp history for a specific link |
+| `GET` | `/signup` | Renders the user signup page |
+| `GET` | `/login` | Renders the user login page |
+| `POST` | `/user` | Registers a new user account |
+| `POST` | `/user/login` | Authenticates an existing user and sets a session cookie |
 
 ---
 *Built with ❤️ by [Shubham Sharma](https://github.com/Shubham-Sharma1995)*
