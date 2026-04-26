@@ -10,7 +10,7 @@ A fast, fully-functional URL Shortener built meticulously with **Node.js, Expres
 ## ✨ Key Features
 - **Instant URL Shortening**: Generates unique 8-character aliases for any valid URL.
 - **Detailed Analytics**: Tracks how many times your short URL has been visited alongside precise timestamps.
-- **User Authentication**: Secure signup and login functionality with persistent session and cookie-based authentication state.
+- **User Authentication & Authorization**: Secure signup, login, and protected routes using persistent session cookies. Ensures that users can only access and manage their own shortened URLs.
 - **Server-Side Rendering**: Built with **EJS** templating for a quick, dynamic, and seamless frontend experience without the overhead of heavy client-side frameworks.
 - **Robust Architecture**: Strictly follows the **MVC (Model-View-Controller)** design pattern, keeping routes, controllers, and models cleanly separated for deep maintainability.
 - **Scalable Database**: Utilizes Mongoose & MongoDB to reliably store and manage relations between short IDs and their target endpoints seamlessly.
@@ -19,7 +19,7 @@ A fast, fully-functional URL Shortener built meticulously with **Node.js, Expres
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB, Mongoose
 - **Frontend Template**: EJS (Embedded JavaScript templating)
-- **Utilities**: `shortid` for blazing-fast unique string generation.
+- **Utilities**: `shortid` for blazing-fast unique string generation, `cookie-parser` for handling session cookies smoothly.
 
 ## 🚀 Getting Started
 
